@@ -4,14 +4,13 @@ Install the [`vitrine`](https://vitrinestudio.app) command line tool in a
 GitHub Actions workflow, validate a Vitrine Studio project with annotations
 and export the App Store / Play Store screenshots.
 
-> **Status: draft.** The action needs a published Vitrine Studio release
-> with the CLI archives (`vitrine-cli_*.tar.gz|zip` and `SHA256SUMS.txt` on
+> Needs a Vitrine Studio release (1.0.0 or later) with the CLI archives
+> (`vitrine-cli_*.tar.gz|zip` and `SHA256SUMS.txt` on
 > [GitHub Releases](https://github.com/vitrinestudio-app/vitrine/releases)).
-> Its home is the repository
-> [`vitrinestudio-app/vitrine-github-action`](https://github.com/vitrinestudio-app/vitrine-github-action)
-> (GitHub Marketplace); the source is maintained in
+> The source is maintained in
 > [`integrations/github-action/`](https://github.com/vitrinestudio-app/vitrine/tree/main/integrations/github-action)
-> of the main repository and copied there.
+> of the main repository and copied to
+> [`vitrinestudio-app/vitrine-github-action`](https://github.com/vitrinestudio-app/vitrine-github-action).
 
 A composite action (bash only, no Node runtime) for Linux x64 and arm64
 (also in Alpine containers), macOS (arm64/x64) and Windows runners. It
@@ -33,7 +32,7 @@ A composite action (bash only, no Node runtime) for Linux x64 and arm64
 
 | input | default | |
 |---|---|---|
-| `version` | `latest` | release version (`0.2.0` or `v0.2.0`); pin it for reproducible builds |
+| `version` | `latest` | release version (`1.0.0` or `v1.0.0`); pin it for reproducible builds |
 | `repository` | `vitrinestudio-app/vitrine` | where the releases are |
 | `cache` | `true` | cache the downloaded CLI |
 | `libc` | `auto` | Linux: `auto`, `gnu` or `musl` (static build) |
@@ -65,7 +64,7 @@ jobs:
       - uses: actions/checkout@v5
       - uses: vitrinestudio-app/vitrine-github-action@v1
         with:
-          version: 0.2.0
+          version: 1.0.0
           project: store-screens
           validate: true
           strict: true
